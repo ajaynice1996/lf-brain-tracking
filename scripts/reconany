@@ -1,0 +1,39 @@
+#!/bin/bash
+# freesurfer_batch_clinical.sh
+# Resumable batch runner for recon-all-clinical (FreeSurfer 8.1.0)
+
+export FREESURFER_HOME=/home/ajay/Documents/freesurfer-8/freesurfer/8.1.0
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
+INPUT_DIR=/home/ajay/Documents/freesurfer-8/freesurfer_inputs/r21_zssr
+SUBJECTS_DIR=/home/ajay/Documents/freesurfer-8/subjects
+mkdir -p $SUBJECTS_DIR
+
+THREADS=10
+
+echo "=============================="
+echo " FreeSurfer Batch (Clinical)  "
+echo " INPUT_DIR: $INPUT_DIR"
+echo " SUBJECTS_DIR: $SUBJECTS_DIR"
+echo " THREADS: $THREADS"
+echo "=============================="
+
+for file in "$INPUT_DIR"/*.nii.gz; do
+    subj=$(basename "$file" .nii.gz)
+    subj_id="${subj}.tp1"
+
+    echo ""
+    echo ">>> Checking subject: $subj_id"
+
+    # 1. If subject does NOT exist → run synthseg
+    if [ ! -d "$SUBJECT_DIR_PATH" ]; then
+        echo ">>> New subject detected — running reconany"
+        run_recon-any -i "$file" -subjid "$subj_id" -threads "$THREADS" -side "both" \
+        -sdir "$SUBJECTS_DIR"
+        #run_recon-any INPUT_SCAN SUBJECT_ID THREADS SIDE [SUBJECT_DIR]
+    fi
+
+    echo ">>> Done with $subj_id"
+
+done
+
