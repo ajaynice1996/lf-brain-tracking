@@ -5,6 +5,7 @@ __pycache__/
 
 # Directories
 Data/
+ULF_R21_pipeline/*
 
 # C extensions
 *.so
