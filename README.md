@@ -71,13 +71,14 @@ Current development areas include:
 ## 📥 Clone the repository
 
 ```bash
-git clone https://github.com/your-username/lf-brain-tracking.git
+Clone the branch lf-brain-tracking-pipeline from lf-brain-tracking;
+# git clone https://github.com/your-username/lf-brain-tracking.git
 ```
 
 ## 📂 Move into the project directory
 
 ```bash
-cd lf-brain-tracking
+change directory cd branch_name
 ```
 
 ## 📦 Install dependencies
