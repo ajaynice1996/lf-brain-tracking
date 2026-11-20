@@ -169,5 +169,5 @@ cython_debug/
 nnUNet_translation/
 nnUNet_translation1/
 
-
 data_r21/*
+data/*
